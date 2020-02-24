@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  php:
+     build: './IaC/php/'
+     volumes:
+       - ./:/var/www/html/
+  apache:
+    build: './IaC/apache/'
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/var/www/html/
+  mysql:
+     build: './IaC/mysql/'
+     ports: 
+       - 3306:3306
+     environment:
+       - MYSQL_ROOT_PASSWORD=SerproAPI
