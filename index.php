@@ -6,6 +6,9 @@
 	<title>Serpro API - Modelo PHP</title>
 	<link href="assets/css/style.css" rel="stylesheet"/>
 	<script src="assets/scripts/functions.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<script type="text/javascript" src="assets/scripts/jquery.js"></script>
 </head>
 <body>
 	<form action="main.php" method="POST" enctype="multipart/form-data">
@@ -63,12 +66,34 @@
 	</form>
 
 
-	<div class="footer">
+	<!-- <div class="footer">
 		<p>
 			<a title="Is ao Site" href="https://clansoftware.com.br" target="_blank">
 				<img src="assets/img/logo-clansoftware.jpeg" />
 			</a>
 		</p>
-	</div>
+	</div> -->
 </body>
+	<footer class="container">
+		<div class="row footer">
+			<div class="col-md-3">
+			<ul class="social_icon">
+                        <li><a href="https://www.facebook.com/clansoftware/" target="_BLANK"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://github.com/clansoftware" target="_BLANK"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/clan-software" target="_BLANK"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                     </ul>
+                     </div>
+			<div class="titlepage col-md-6">
+			<div style="height: 30px"></div>
+                     <a href="https://api.whatsapp.com/send?phone=554184605647" target="_BLANK">
+                     	<i class="fa fa-mobile" style="color: white"> (41) 8460-5647</i></a> | 
+                     <a href="tel:+554133611822" target="_BLANK">
+                     	<i class="fa fa-phone" style="color: white"> (41) 3361-1822</i> 
+                     </a> | <a href="mailto:contato@clansoftware.com.br"><i class="fa fa-envelope-o" style="color: white"> contato@clansoftware.com.br</i></a>
+                  </div>
+			<div class="col-md-3">
+				<img id="clan-logo" src="assets/img/clan-logo_transparent.png">
+			</div>
+		</div>
+	</footer>
 </html>

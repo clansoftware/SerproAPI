@@ -19,21 +19,30 @@ fieldset .label-response {
 	margin-top: -8% !important;
 	position: relative;
 }
-
+.hidden {
+	display: none !important;
+}
 .footer {
    position: fixed;
    left: 0;
    bottom: 0;
-   width: 100%;
+   width: 102%;
    background-color: black;
    color: white;
    text-align: center;
 }
-
-.footer img {
-	max-width: 55px;
+.social_icon li{
+    list-style-type: none;
+    float: left;
+    margin: 10px;
+    font-size: 20px;
+    padding: 15px;
 }
-
-.hidden {
-	display: none !important;
+.social_icon li a i{
+  color:white;
+}
+#clan-logo {
+  width: 80px;
+  height: 80px;
+  filter: invert(100%);
 }
