@@ -6,7 +6,7 @@
 if (isset($_POST) && !empty($_POST)) {
 	require_once("Serpro.php");
 	$serpro = new Serpro($_POST['key'], $_POST['secrect'], True);
-	$bearer = $serpro::getBearer($_POST['producao']);	
+	$bearer = $serpro::getBearer($_POST['producao']);
 	$response = array(
 			'type' => 'success',
 			'msg' => 'Solicitação realizada com sucesso !',

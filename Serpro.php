@@ -3,30 +3,31 @@
  * @author Santos L. Victor
  * @see Responsavel por realizar uma solicitacao de metodo ao servidor da Serpro
 */
-
-
-foreach (glob("classes/*.php") as $filename)
-{
-    include $filename;
-}
+require_once("classes/Validate.class.php");
 
 class Serpro extends Validate {
 
-	private static $url = "https://apigateway.serpro.gov.br/token";
+	private static $token_url = "https://apigateway.serpro.gov.br/token";
+	private static $url;
 	private static $key;
 	private static $secret;
 
 	/**
+		* @see 
 		* @param [String] $key, exemplo: Consumer Key: djaR21PGoYp1iyK2n2ACOH9REdUb   
 		* @param [String] $secret, exemplo: Consumer Secret: ObRsAJWOL4fv2Tp27D1vd8fB3Ote
+		* @param [String] $secret, exemplo: Consumer Secret: ObRsAJWOL4fv2Tp27D1vd8fB3Ote
+		* @param [String] $secret, exemplo: Consumer Secret: ObRsAJWOL4fv2Tp27D1vd8fB3Ote
 	*/
-	function __construct($key, $secret, $debug=False) {
+	function __construct($key, $secret, $url, $debug=False) {
 		try {
 			if ($debug) {
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
 				error_reporting(E_ALL);
 			}
+			
+			self::$url = $url;
 			self::$key = $key;
 			self::$secret = $secret;
 		} catch (Exception $e) {
@@ -51,19 +52,19 @@ class Serpro extends Validate {
 			}
 			
 			$response = array();
-			$authorization = base64_encode(self::$key.':'.self::$secret);
 			
 			$ch = curl_init();
 
-			curl_setopt($ch, CURLOPT_URL, self::$url);
+			$headers = array();
+			$authorization = base64_encode(self::$key.':'.self::$secret);
+			$headers[] = 'Authorization: Basic '.$authorization;
+			$headers[] = 'Content-Type: application/x-www-form-urlencoded';
+
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_URL, self::$token_url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
-
-			$headers = array();
-			$headers[] = 'Authorization: Basic '.$authorization;
-			$headers[] = 'Content-Type: application/x-www-form-urlencoded';
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 			$result = curl_exec($ch);
 			if (curl_errno($ch)) {
@@ -76,5 +77,4 @@ class Serpro extends Validate {
 		}
 		return $result;
 	}
-
 }
